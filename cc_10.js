@@ -25,3 +25,24 @@ console.log(prod1.getDetails());  // Expected output: "Product: Laptop, ID: 101,
 prod1.updateStock(3); // Decrease the Amount of Stock by 3
 
 console.log(prod1.getDetails()); // Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 7"
+
+// Task 2 
+// Creating an Order Class
+
+class Order {
+    constructor(orderId, product, quantity) {
+        this.orderId = orderId; // Order ID
+        this.product = product; // Product being ordered
+        this.quantity = quantity; // Quantity of product Ordered
+        this.totalPrice = product.price * quantity; // Total price for the order
+        this.product.updateStock(quantity); // Reduce stock based on quantity ordered
+    }
+    getOrderDetails() {
+        return `Order ID: ${this.orderId}, Product: ${this.product.name}, Quantity: ${this.quantity}, Total Price: $${this.totalPrice}`
+    }; // Return Formatted Order Details
+}
+
+const order1 = new Order(501, prod1, 2); // Declaring a new order
+
+console.log(order1.getOrderDetails()); // Loggin the order details
+console.log(prod1.getDetails()); // Logging
