@@ -72,10 +72,18 @@ class Inventory {
             
             }
         }
-        listOrders() {
-            this.orders.forEach(order => {
-                console.log(order.getOrderDetails());
-            });
+listOrders() {
+    this.orders.forEach(order => {
+        console.log(order.getOrderDetails());
+    });
+}
+
+// Task 5 Modifications
+restockProduct(productId, quantity) {
+    const product = this.products.find(p =>p.id === productId); // Find a product bases on product ID
+    if (product) {
+        product.restock(quantity); // Increase product stock based on quantity
+    } 
 }
 }
 
@@ -90,5 +98,12 @@ inventory.placeOrder(601, prod1, 2); // Placing a new Order
 inventory.listOrders(); // Expected output: "Order ID: 601, Product: Laptop, Quantity: 2, Total Price: $2400"
 
 console.log(prod1.getDetails()); // Expected output: "Product: Laptop, ID: 101, Price: $1200, Stock: 3"
+
+// Task 5 
+// Product Restocking 
+
+inventory.restockProduct(101, 5); // Restocking of Product
+
+console.log(prod1.getDetails()); // logging the product details
 
 
